@@ -1,0 +1,29 @@
+ASSETS
+======
+
+Arquivos esperados nesta pasta (substitua os placeholders):
+
+  advogada.jpg          Retrato profissional do Hero. Proporção 4:5 (ex.: 1200x1500px).
+  advogada-sobre.jpg    Retrato secundário da seção "Sobre". Proporção 3:4 (ex.: 900x1200px).
+  og-image.jpg          Imagem de compartilhamento em redes sociais. 1200x630px.
+  favicon.svg           Já incluído — troque a letra pelas iniciais da advogada.
+  apple-touch-icon.png  Ícone para iOS. 180x180px.
+
+Como inserir as fotografias
+---------------------------
+1) Hero — em index.html, dentro de <div class="portrait__frame">, substitua o bloco
+   <div class="portrait__placeholder"> ... </div> por:
+
+   <img src="assets/advogada.jpg"
+        alt="Retrato profissional de Gabriela Simonelli"
+        class="portrait__img" width="1200" height="1500">
+
+2) Sobre — em index.html, dentro de <div class="about__frame">, substitua o bloco
+   <div class="about__placeholder"> ... </div> por:
+
+   <img src="assets/advogada-sobre.jpg"
+        alt="Gabriela Simonelli em seu escritório"
+        class="about__img" width="900" height="1200">
+
+As classes .portrait__img e .about__img já possuem o enquadramento (object-fit e
+proporção) definidos em css/style.css — nenhum ajuste de CSS é necessário.

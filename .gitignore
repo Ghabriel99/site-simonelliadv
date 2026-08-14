@@ -1,0 +1,18 @@
+# Material interno de revisão (PDF/DOCX com pendências e capturas de tela).
+# Fora do repositório para não ser publicado junto com o site.
+apresentacao/
+
+# Configuração local de ferramentas
+.claude/
+
+# Sistema operacional
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Dependências e build (caso venham a existir)
+node_modules/
+dist/
+.env
+.env.local
