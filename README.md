@@ -103,11 +103,31 @@ do handler em `js/script.js` (seção `08`).
 
 ## Publicação
 
-Projeto 100% estático, pronto para:
+Projeto 100% estático, sem build.
 
-- **GitHub Pages** — Settings › Pages › Deploy from branch › `main` / `root`
-- **Vercel** — importar o repositório, framework preset `Other`, sem build command
-- **Netlify** — arrastar a pasta ou conectar o repositório, publish directory `.`
+### GitHub Pages (ambiente de teste, já configurado)
+
+O workflow `.github/workflows/deploy.yml` publica a cada push na `main`.
+Basta deixar ligado em **Settings › Pages › Source: GitHub Actions**.
+
+Endereço: <https://ghabriel99.github.io/site-simonelliadv/>
+
+> Esse endereço está com `noindex` no `index.html`, para não concorrer com o
+> domínio definitivo nos buscadores.
+
+### Ao migrar para o domínio próprio
+
+1. No `index.html`, troque `noindex, nofollow` por `index, follow`.
+2. Atualize o endereço em `canonical`, `og:url`, `og:image`, `twitter:image` e
+   no `url`/`image` do JSON-LD — são seis ocorrências do mesmo endereço.
+3. Em **Settings › Pages › Custom domain**, informe o domínio e marque
+   *Enforce HTTPS*. O GitHub cria um arquivo `CNAME` na raiz.
+4. No provedor do domínio, aponte o DNS para o GitHub Pages.
+
+### Alternativas
+
+- **Vercel** — importar o repositório, preset `Other`, sem build command
+- **Netlify** — conectar o repositório, publish directory `.`
 
 ## Acessibilidade e SEO
 
