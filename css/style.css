@@ -256,13 +256,26 @@ textarea {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 100;
+}
+
+/* O fundo translúcido do cabeçalho fica numa pseudo-elemento, e não no
+   próprio .header, de propósito: `backdrop-filter` faz do elemento um bloco
+   de contenção para os descendentes `position: fixed`. Aplicado no .header,
+   o painel do menu passava a se medir pela faixa do cabeçalho assim que a
+   página rolava — abria cortado, com a altura do cabeçalho. No pseudo-
+   elemento o efeito é o mesmo e o painel continua preso à viewport. */
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: rgba(255, 255, 255, 0);
   border-bottom: 1px solid transparent;
   transition: background .4s var(--ease), border-color .4s var(--ease),
               box-shadow .4s var(--ease);
 }
 
-.header.is-scrolled {
+.header.is-scrolled::before {
   background: rgba(255, 255, 255, .93);
   backdrop-filter: saturate(180%) blur(14px);
   -webkit-backdrop-filter: saturate(180%) blur(14px);
