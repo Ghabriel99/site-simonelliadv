@@ -26,23 +26,29 @@
    01. TOKENS E RESET
 ------------------------------------------------------------- */
 :root {
-  /* Cores — paleta preto e branco */
-  --black:      #000000;
-  --ink:        #141414;
-  --text:       #2F2E2F;
+  /* Cores — manual de identidade: preto #080808 e branco #ffffff.
+     Os cinzas são o próprio preto rebaixado, usados só para hierarquia. */
+  --black:      #080808;
+  --ink:        #080808;
+  --text:       #3A3A3A;
   --grey:       #6B6B6B;
   --grey-light: #9A9A9A;
   --paper:      #FFFFFF;
-  --bone:       #F4F2EE;
-  --cream:      #FBF9F5;
+  --bone:       #F2F2F2;
+  --cream:      #FFFFFF;
 
-  --line:       rgba(0, 0, 0, .15);
-  --line-soft:  rgba(0, 0, 0, .08);
+  --line:       rgba(8, 8, 8, .15);
+  --line-soft:  rgba(8, 8, 8, .08);
   --line-light: rgba(255, 255, 255, .18);
 
-  /* Tipografia */
-  --font-display: "Cormorant Garamond", "Times New Roman", serif;
-  --font-sans:    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* Tipografia — manual de identidade:
+     principal Cinzel, secundária Antipasto Pro.
+     A Antipasto Pro só é licenciada para uso comercial mediante compra
+     (os arquivos enviados são "trial", CC BY-NC). Até a licença web ser
+     adquirida, a Jost — geométrica, mesma construção — faz o papel dela.
+     Para trocar depois, basta hospedar a fonte e editar --font-sans. */
+  --font-display: "Cinzel", "Times New Roman", serif;
+  --font-sans:    "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   /* Métricas */
   --container:    1200px;
@@ -137,7 +143,7 @@ textarea {
 
 .section--black {
   background: var(--black);
-  color: rgba(251, 249, 245, .74);
+  color: rgba(255, 255, 255, .74);
 }
 
 .eyebrow {
@@ -150,23 +156,27 @@ textarea {
 }
 
 .section--black .eyebrow,
-.cta .eyebrow { color: rgba(251, 249, 245, .6); }
+.cta .eyebrow { color: rgba(255, 255, 255, .6); }
 
 .section__title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4.2vw, 3.35rem);
-  line-height: 1.14;
-  letter-spacing: -.02em;
+  font-size: clamp(1.7rem, 3.3vw, 2.5rem);
+  line-height: 1.26;
+  letter-spacing: .015em;
   font-weight: 500;
   max-width: 20ch;
 }
 
+/* A Cinzel não tem itálico. O destaque vem da fonte secundária, em
+   itálico leve — o mesmo par de fontes do manual de identidade. */
 .section__title em,
 .hero__title em,
 .statement__title em,
 .cta__title em {
+  font-family: var(--font-sans);
   font-style: italic;
-  font-weight: 400;
+  font-weight: 300;
+  letter-spacing: .005em;
 }
 
 .section__lead {
@@ -232,7 +242,7 @@ textarea {
 
 .btn--outline-light {
   --btn-fg: var(--cream);
-  --btn-bd: rgba(251, 249, 245, .34);
+  --btn-bd: rgba(255, 255, 255, .34);
 }
 .btn--outline-light:hover { --btn-bd: var(--cream); }
 
@@ -275,30 +285,41 @@ textarea {
   .nav__cta { white-space: nowrap; }
 }
 
-.brand { display: flex; align-items: center; gap: .7rem; }
+/* A assinatura reproduz o lockup do manual: monograma, filete e o nome em
+   Cinzel com "ADVOGADA" espacejada abaixo. Na horizontal o filete fica à
+   esquerda do texto, no lugar do filete horizontal da versão empilhada. */
+.brand { display: flex; align-items: center; gap: .85rem; }
 
 .brand__mark {
-  height: 32px;
+  height: 42px;
   width: auto;
   flex: 0 0 auto;
 }
 
-.brand__text { display: flex; flex-direction: column; gap: .15rem; }
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  padding-left: .85rem;
+  border-left: 1px solid var(--line);
+}
 
 .brand__name {
   font-family: var(--font-display);
-  font-size: 1.32rem;
-  font-weight: 600;
-  letter-spacing: .02em;
-  line-height: 1.1;
+  font-size: 1.04rem;
+  font-weight: 500;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  line-height: 1;
   color: var(--ink);
 }
 
 .brand__tagline {
-  font-size: .6rem;
-  font-weight: 500;
-  letter-spacing: .2em;
+  font-size: .56rem;
+  font-weight: 400;
+  letter-spacing: .34em;
   text-transform: uppercase;
+  line-height: 1;
   color: var(--grey);
 }
 
@@ -397,9 +418,9 @@ textarea {
 
 .hero__title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 3.9vw, 3.1rem);
-  line-height: 1.12;
-  letter-spacing: -.02em;
+  font-size: clamp(1.7rem, 3.1vw, 2.4rem);
+  line-height: 1.26;
+  letter-spacing: .015em;
   font-weight: 500;
   max-width: 22ch;
 }
@@ -475,7 +496,7 @@ textarea {
   font-weight: 500;
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: rgba(251, 249, 245, .62);
+  color: rgba(255, 255, 255, .62);
 }
 
 .portrait__caption {
@@ -509,9 +530,9 @@ textarea {
 
 .statement__title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4.4vw, 3.4rem);
-  line-height: 1.14;
-  letter-spacing: -.022em;
+  font-size: clamp(1.7rem, 3.4vw, 2.55rem);
+  line-height: 1.26;
+  letter-spacing: .015em;
   font-weight: 500;
 }
 
@@ -661,9 +682,9 @@ textarea {
 
 .area__title {
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 2.1vw, 1.75rem);
-  line-height: 1.2;
-  letter-spacing: -.01em;
+  font-size: clamp(1.15rem, 1.75vw, 1.42rem);
+  line-height: 1.3;
+  letter-spacing: .02em;
   font-weight: 500;
 }
 
@@ -718,9 +739,10 @@ textarea {
 
 .diff__title {
   font-family: var(--font-display);
-  font-size: 1.35rem;
+  font-size: 1.12rem;
   font-weight: 500;
-  letter-spacing: -.01em;
+  line-height: 1.32;
+  letter-spacing: .02em;
 }
 
 .diff__text {
@@ -750,10 +772,11 @@ textarea {
 }
 
 .quote__text {
-  font-family: var(--font-display);
-  font-size: 1.22rem;
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 300;
   font-style: italic;
-  line-height: 1.5;
+  line-height: 1.62;
   color: var(--ink);
 }
 
@@ -854,7 +877,7 @@ textarea {
 ------------------------------------------------------------- */
 .cta {
   background: var(--black);
-  color: rgba(251, 249, 245, .74);
+  color: rgba(255, 255, 255, .74);
 }
 
 .cta__inner {
@@ -865,9 +888,9 @@ textarea {
 
 .cta__title {
   font-family: var(--font-display);
-  font-size: clamp(2.05rem, 4.4vw, 3.4rem);
-  line-height: 1.14;
-  letter-spacing: -.022em;
+  font-size: clamp(1.72rem, 3.4vw, 2.55rem);
+  line-height: 1.26;
+  letter-spacing: .015em;
   font-weight: 500;
   color: var(--cream);
 }
@@ -1042,7 +1065,7 @@ textarea {
 .footer {
   padding-block: clamp(3.5rem, 7vw, 5rem) 2.5rem;
   background: var(--black);
-  color: rgba(251, 249, 245, .72);
+  color: rgba(255, 255, 255, .72);
 }
 
 .footer__inner {
@@ -1054,22 +1077,19 @@ textarea {
 
 .footer__brand { display: flex; flex-direction: column; align-items: flex-start; gap: .35rem; }
 
-.footer__mark { height: 46px; width: auto; margin-bottom: .9rem; }
-
-.footer__name {
-  font-family: var(--font-display);
-  font-size: 1.45rem;
-  font-weight: 600;
-  letter-spacing: .02em;
-  color: var(--cream);
+/* No rodapé entra o lockup completo do manual, na versão branca. */
+.footer__mark {
+  width: 216px;
+  height: auto;
+  margin-bottom: 1.1rem;
 }
 
 .footer__tagline {
-  font-size: .6rem;
-  font-weight: 500;
-  letter-spacing: .2em;
+  font-size: .58rem;
+  font-weight: 400;
+  letter-spacing: .3em;
   text-transform: uppercase;
-  color: rgba(251, 249, 245, .55);
+  color: rgba(255, 255, 255, .55);
 }
 
 .footer__nav ul { display: grid; gap: .75rem; }
@@ -1079,12 +1099,12 @@ textarea {
   border-bottom: 1px solid transparent;
   transition: color .3s var(--ease), border-color .3s var(--ease);
 }
-.footer__nav a:hover { color: var(--cream); border-bottom-color: rgba(251, 249, 245, .3); }
+.footer__nav a:hover { color: var(--cream); border-bottom-color: rgba(255, 255, 255, .3); }
 
 .footer__legal { display: grid; gap: .5rem; font-size: .85rem; }
 
 .footer__legal a {
-  border-bottom: 1px solid rgba(251, 249, 245, .22);
+  border-bottom: 1px solid rgba(255, 255, 255, .22);
   transition: border-color .3s var(--ease), color .3s var(--ease);
 }
 .footer__legal a:hover { color: var(--cream); border-bottom-color: var(--cream); }
@@ -1093,15 +1113,15 @@ textarea {
   margin-top: .5rem;
   font-size: .78rem;
   line-height: 1.6;
-  color: rgba(251, 249, 245, .48);
+  color: rgba(255, 255, 255, .48);
 }
 
 .footer__copy {
   margin-top: 1rem;
   padding-top: 1.25rem;
-  border-top: 1px solid rgba(251, 249, 245, .14);
+  border-top: 1px solid rgba(255, 255, 255, .14);
   font-size: .78rem;
-  color: rgba(251, 249, 245, .48);
+  color: rgba(255, 255, 255, .48);
 }
 
 /* -------------------------------------------------------------
@@ -1187,8 +1207,9 @@ textarea {
 
 .modal__title {
   font-family: var(--font-display);
-  font-size: 1.9rem;
+  font-size: 1.5rem;
   font-weight: 500;
+  letter-spacing: .015em;
 }
 
 .modal__body { display: grid; gap: 1rem; margin-top: 1.5rem; }
@@ -1247,8 +1268,9 @@ textarea {
     display: block;
     padding: 1.1rem 0;
     font-family: var(--font-display);
-    font-size: 1.35rem;
-    letter-spacing: -.01em;
+    font-size: 1.15rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
   }
   .nav__link::after { display: none; }
 
@@ -1283,6 +1305,9 @@ textarea {
 
   .footer__inner { grid-template-columns: 1fr; gap: 2.5rem; }
 
+  /* folga para o botao flutuante do WhatsApp nao cobrir o copyright */
+  .footer { padding-bottom: 5.5rem; }
+
   .hero__actions .btn,
   .cta__actions .btn,
   .section__foot .btn { width: 100%; }
@@ -1294,9 +1319,10 @@ textarea {
 
 @media (max-width: 420px) {
   .brand { gap: .6rem; }
-  .brand__mark { height: 28px; }
-  .brand__name { font-size: 1.12rem; }
-  .brand__tagline { font-size: .54rem; letter-spacing: .16em; }
+  .brand__mark { height: 34px; }
+  .brand__text { padding-left: .6rem; gap: .25rem; }
+  .brand__name { font-size: .9rem; letter-spacing: .07em; }
+  .brand__tagline { font-size: .5rem; letter-spacing: .26em; }
 }
 
 /* Preferência por menos movimento */
