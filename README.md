@@ -1,4 +1,4 @@
-# Gabriela Simonelli — Advocacia Estratégica
+# Gabriela Simonelli — Advocacia e Consultoria Jurídica
 
 Landing page institucional em HTML5, CSS3 e JavaScript puro (sem frameworks e sem backend).
 
@@ -18,7 +18,7 @@ assets/marca/    monograma GS, selo, assinatura e ícones (SVG + PNG)
 ## Marca
 
 Monograma **G | S** desenhado em Cormorant Garamond, a mesma família dos títulos do
-site, com filete em bronze. As letras estão convertidas em curvas: os arquivos não
+site, em preto e branco, com filete em cinza. As letras estão convertidas em curvas: os arquivos não
 dependem da fonte instalada.
 
 | Arquivo | Uso |
@@ -39,34 +39,34 @@ Basta abrir o `index.html` no navegador. Para um servidor local:
 npx serve .
 ```
 
-## O que precisa ser preenchido antes de publicar
+## Seções
 
-Todos os campos abaixo estão marcados como placeholders no código.
+Início · Posicionamento · Sobre · Áreas de Atuação · Diferenciais · Depoimentos ·
+Dúvidas Frequentes · Chamada final · Contato
 
-**Em `index.html`** (localize e substitua):
+## Dados já preenchidos
 
-| Placeholder | Onde aparece |
-| --- | --- |
-| `[OAB/UF]` e `[XX.XXX/UF]` | hero, sobre, contato, footer |
-| `[TELEFONE]` | contato (`href="tel:"`) e JSON-LD |
-| `[WHATSAPP]` | seção de contato (texto exibido) |
-| `[E-MAIL]` | contato, modal de privacidade, JSON-LD |
-| `[ENDEREÇO]` | contato, footer, JSON-LD |
-| `[INSTAGRAM]` / `[LINKEDIN]` | contato e JSON-LD |
-| `[URL DO SITE]` | canonical e Open Graph |
-| `[INSERIR TÍTULO DO ARTIGO]` / `[INSERIR LINK PARA PUBLICAÇÃO]` | seção Publicações |
-| `[INSERIR DEPOIMENTO AUTORIZADO]` | seção Depoimentos — preencher **apenas** com depoimentos reais e autorizados, ou remover a seção |
-| `[INSERIR INFORMAÇÕES SOBRE A CONSULTA]` etc. | respostas do FAQ |
+OAB/PR 126.086 · WhatsApp e telefone (43) 99860-6421 · gsimonelli.adv@gmail.com ·
+Rua Maria Lúcia da Paz, 550 — Edifício Quartier, Londrina/PR ·
+[LinkedIn](https://www.linkedin.com/in/gabrielasimonelli-adv/) ·
+atendimento de segunda a sexta das 8h30 às 18h e sábado das 8h30 às 12h,
+presencial ou on-line.
 
-**Em `js/script.js`** (bloco `01. CONFIGURAÇÃO`, no topo do arquivo):
+O número do WhatsApp fica em `WHATSAPP_NUMBER` e o e-mail em `EMAIL_CONTATO`, no
+topo de `js/script.js`. As mensagens pré-preenchidas ficam em `WHATSAPP_MESSAGES`
+e são escolhidas pelo atributo `data-wa` de cada CTA (`consulta`, `demanda`,
+`contratos`, `familia`, `consumidor`, `civel`, `tributario`).
 
-```js
-var WHATSAPP_NUMBER = '5543999999999'; // formato internacional, só dígitos
-```
+## O que ainda falta
 
-As mensagens pré-preenchidas ficam em `WHATSAPP_MESSAGES` e são selecionadas pelo
-atributo `data-wa` de cada CTA no HTML (`consulta`, `demanda`, `empresarial`,
-`civel`, `imobiliario`, `tributario`).
+| Placeholder | Onde aparece | Observação |
+| --- | --- | --- |
+| `[URL DO SITE]` | canonical, Open Graph e JSON-LD | domínio ainda não definido |
+| `[FOTO PROFISSIONAL]` | hero e seção Sobre | ensaio fotográfico pendente |
+| `[INSERIR DEPOIMENTO AUTORIZADO]` | seção Depoimentos | preencher **apenas** com depoimentos reais e autorizados |
+
+Sem Instagram no ar — quando houver, basta acrescentar ao bloco de contato e ao
+`sameAs` do JSON-LD.
 
 **Em `assets/`**: veja `assets/LEIA-ME.txt` para as fotografias e o passo a passo
 de substituição dos placeholders visuais.

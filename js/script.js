@@ -1,5 +1,5 @@
 /* =============================================================
-   Gabriela Simonelli — Advocacia Estratégica
+   Gabriela Simonelli — Advocacia e Consultoria Jurídica
    JavaScript (Vanilla)
 
    01. Configuração
@@ -24,17 +24,21 @@
   ----------------------------------------------------------- */
 
   // Número do WhatsApp em formato internacional, apenas dígitos.
-  // Exemplo: '5543999999999' (55 = Brasil, 43 = DDD).
-  var WHATSAPP_NUMBER = '[WHATSAPP]';
+  // 55 = Brasil, 43 = DDD.
+  var WHATSAPP_NUMBER = '5543998606421';
+
+  // E-mail de contato, usado no aviso exibido após o envio do formulário.
+  var EMAIL_CONTATO = 'gsimonelli.adv@gmail.com';
 
   // Mensagens pré-preenchidas por tipo de CTA (atributo data-wa no HTML).
   var WHATSAPP_MESSAGES = {
     consulta:    'Olá, gostaria de agendar uma consulta jurídica e saber mais sobre o atendimento.',
     demanda:     'Olá, gostaria de conversar sobre uma demanda jurídica e entender as possibilidades de orientação.',
-    empresarial: 'Olá, gostaria de conversar sobre uma questão jurídica empresarial.',
-    civel:       'Olá, gostaria de conversar sobre uma questão jurídica na área cível.',
-    imobiliario: 'Olá, gostaria de conversar sobre uma questão jurídica imobiliária.',
-    tributario:  'Olá, gostaria de conversar sobre uma questão jurídica tributária.',
+    contratos:   'Olá, gostaria de conversar sobre a elaboração ou revisão de um contrato.',
+    familia:     'Olá, gostaria de conversar sobre uma questão de Direito de Família ou das Sucessões.',
+    consumidor:  'Olá, gostaria de conversar sobre uma questão de Direito do Consumidor.',
+    civel:       'Olá, gostaria de conversar sobre uma questão cível ou empresarial.',
+    tributario:  'Olá, gostaria de conversar sobre uma questão tributária.',
     formulario:  'Olá, gostaria de falar sobre uma demanda jurídica. Segue um resumo:'
   };
 
@@ -396,7 +400,7 @@
           'a integração do formulário deve ser configurada posteriormente. ' +
           'Enquanto isso, você pode <a href="' + buildWhatsAppUrl('formulario', resumo) +
           '" target="_blank" rel="noopener noreferrer">enviar a mensagem pelo WhatsApp</a> ' +
-          'ou escrever para <a href="mailto:[E-MAIL]">[E-MAIL]</a>.';
+          'ou escrever para <a href="mailto:' + EMAIL_CONTATO + '">' + EMAIL_CONTATO + '</a>.';
       }
 
       console.info('[Formulário de contato] Dados validados:', {
