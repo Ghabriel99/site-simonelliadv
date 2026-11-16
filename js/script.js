@@ -395,21 +395,34 @@
 
       if (status) {
         status.classList.add('is-visible');
-        status.innerHTML =
-          'Os dados foram validados com sucesso. Este site não possui servidor de envio: ' +
-          'a integração do formulário deve ser configurada posteriormente. ' +
-          'Enquanto isso, você pode <a href="' + buildWhatsAppUrl('formulario', resumo) +
-          '" target="_blank" rel="noopener noreferrer">enviar a mensagem pelo WhatsApp</a> ' +
-          'ou escrever para <a href="mailto:' + EMAIL_CONTATO + '">' + EMAIL_CONTATO + '</a>.';
+
+        // Montado com createElement em vez de innerHTML: o que a pessoa
+        // digitou entra como texto e como parâmetro de URL, nunca como
+        // marcação. Assim nenhuma edição futura deste trecho transforma o
+        // conteúdo do formulário em HTML executável.
+        status.textContent = 'Os dados foram validados com sucesso. Este site não possui ' +
+          'servidor de envio: a integração do formulário deve ser configurada ' +
+          'posteriormente. Enquanto isso, você pode ';
+
+        var linkWhats = document.createElement('a');
+        linkWhats.href = buildWhatsAppUrl('formulario', resumo);
+        linkWhats.target = '_blank';
+        linkWhats.rel = 'noopener noreferrer';
+        linkWhats.textContent = 'enviar a mensagem pelo WhatsApp';
+
+        var linkMail = document.createElement('a');
+        linkMail.href = 'mailto:' + EMAIL_CONTATO;
+        linkMail.textContent = EMAIL_CONTATO;
+
+        status.appendChild(linkWhats);
+        status.appendChild(document.createTextNode(' ou escrever para '));
+        status.appendChild(linkMail);
+        status.appendChild(document.createTextNode('.'));
       }
 
-      console.info('[Formulário de contato] Dados validados:', {
-        nome: form.nome.value.trim(),
-        email: form.email.value.trim(),
-        telefone: form.telefone.value.trim(),
-        assunto: form.assunto.value,
-        mensagem: form.mensagem.value.trim()
-      });
+      // Os dados do formulário não são registrados em lugar nenhum: o que a
+      // pessoa escreve pode ser informação sensível sobre um caso jurídico, e
+      // o console do navegador fica acessível a extensões instaladas.
     });
   }
 

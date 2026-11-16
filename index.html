@@ -5,6 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080808">
 
+  <!-- Política de segurança de conteúdo. O site só carrega script, estilo,
+       imagem e fonte de si mesmo e do Google Fonts; qualquer injeção de
+       script de terceiros é recusada pelo navegador.
+       Ao integrar o formulário a um serviço externo (Formspree e afins),
+       acrescente o domínio do serviço em form-action e connect-src. -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    base-uri 'self';
+    object-src 'none';
+    frame-src 'none';
+    script-src 'self';
+    style-src 'self' https://fonts.googleapis.com;
+    font-src 'self' https://fonts.gstatic.com;
+    img-src 'self' data:;
+    connect-src 'self';
+    form-action 'self';
+    upgrade-insecure-requests">
+
+  <!-- Não vaza o endereço interno da página ao sair do site. -->
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
   <title>Gabriela Simonelli | Advocacia e Consultoria Jurídica</title>
   <meta name="description" content="Advocacia e consultoria jurídica em Londrina/PR. Atuação consultiva e contenciosa em Direito Civil, Empresarial, de Família e das Sucessões, do Consumidor e Tributário.">
   <meta name="author" content="Gabriela Simonelli">

@@ -136,6 +136,39 @@ Endereço: <https://ghabriel99.github.io/site-simonelliadv/>
 - Suporte a `prefers-reduced-motion`
 - Meta description, Open Graph, Twitter Card e dados estruturados (schema.org `Attorney`)
 
+## Segurança e privacidade
+
+Site estático, sem servidor, sem banco e sem dependências de terceiros no
+build — a superfície de ataque é o próprio HTML.
+
+- **CSP** declarada no `index.html`: script, estilo, imagem e fonte só de
+  origem própria e do Google Fonts. Injeção de script inline é recusada.
+  Ao integrar o formulário a um serviço externo, acrescente o domínio em
+  `form-action` e `connect-src`.
+- **Referrer-Policy** `strict-origin-when-cross-origin`.
+- O aviso do formulário é montado com `createElement`, nunca `innerHTML`:
+  o que a pessoa digita entra como texto e como parâmetro de URL.
+- Os dados do formulário **não** são registrados em console nem em lugar
+  nenhum. Podem conter informação sensível sobre um caso.
+- Links externos levam `rel="noopener noreferrer"`.
+- `apresentacao/` nunca entrou no histórico do Git — o material de revisão,
+  o PSD e as fontes licenciadas não estão no repositório.
+- O workflow do Pages roda com permissão mínima (`contents: read`).
+
+### Pendente de um domínio próprio
+
+O GitHub Pages não deixa definir cabeçalhos HTTP, então ficam de fora
+`Content-Security-Policy: frame-ancestors` (anti-clickjacking),
+`X-Content-Type-Options` e `Strict-Transport-Security`. Com domínio próprio
+atrás de uma CDN (Cloudflare, Netlify) dá para configurar os três.
+Em Pages, marque **Enforce HTTPS**.
+
+### LGPD
+
+As fontes vêm do Google: o IP de quem visita chega a um terceiro antes de
+qualquer consentimento. Hospedar as fontes no próprio repositório elimina
+essa chamada. O site não usa cookies, analytics nem pixel de rastreamento.
+
 ## Comunicação
 
 O conteúdo foi redigido em tom sóbrio e informativo, sem promessa de resultado,
